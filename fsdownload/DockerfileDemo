@@ -1,0 +1,14 @@
+FROM registry.cn-hangzhou.aliyuncs.com/arlettebrook/chatgpt
+MAINTAINER arlettebrook<andrewbrook@qq.com>
+ 
+ENV MYPATH /app/chatgpt
+WORKDIR $MYPATH
+
+CMD echo $MYPATH
+CMD cd $MYPATH
+
+
+CMD python3.11 bot.py
+
+CMD echo "success--------------ok"
+CMD /bin/bash

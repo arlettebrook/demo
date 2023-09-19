@@ -1,0 +1,41 @@
+#!/bin/bash
+echo -e "\e[41m请保持手机不休眠！！！ \e[42m========Startingup========\e[49m"
+echo -e "正在更新apt以及其他必备工具 \e[42m========1/11========\e[49m"
+apt update
+apt install git
+echo -e "正在安装python3.11依赖项 \e[42m========2/11========\e[49m"
+apt-get install zlib1g-dev libbz2-dev libssl-dev libncurses5-dev libsqlite3-dev libreadline-dev tk-dev libgdbm-dev libdb-dev libpcap-dev xz-utils libexpat1-dev liblzma-dev libffi-dev libc6-dev
+echo -e "正在创建目录，防止乱拉屎 \e[42m========3/11========\e[49m"
+mkdir /home/Python
+mkdir /home/GPT
+mkdir /home/onebot
+cd /home/Python
+echo -e "下载Python3.11包 \e[42m========4/11\========\e[49m"
+wget https://www.python.org/ftp/python/3.11.1/Python-3.11.1.tgz
+echo -e "解压Python3.11包 \e[42m========5/10\========\e[49m"
+tar -zxvf Python-3.11.1.tgz
+echo -e "清理Python3.11包 \e[42m========6/11\========\e[49m"
+rm -f Python-3.11.1.tgz
+echo -e "创建目录，准备编译安装(速度可能很慢，请耐心等待) \e[42m========7/11========\e[49m"
+mkdir /usr/lib/python3.11
+cd /home/Python/Python-3.11.1
+./configure --prefix=/usr/local/python3.11  --enable-optimizations
+make
+echo -e "关联软链接 \e[42m========8/11========\e[49m"
+ln -sf /usr/local/python3.11/bin/python3.11 /usr/bin/python3
+ln -sf /usr/local/python3.11/bin/pip3.11 /usr/bin/pip3
+echo -e "克隆项目 \e[42m========9/11========\e[49m"
+cd /home/GPT
+git clone https://github.com/Mrs4s/go-cqhttp/releases/download/v1.0.1/go-cqhttp_linux_arm64.tar.gz
+rm -f go-cqhttp_linux_arm64.tar.gz
+echo -e "安装python的requirements \e[42m========10/11========\e[49m"
+cd /home/GPT/chatgpt-mirai-qq-bot
+pip3 install -r requirements.txt
+echo -e "安装go-cqhttp \e[42m========11/11========\e[49m"
+cd /home/onebot
+wget https://github.com/Mrs4s/go-cqhttp/releases/download/v1.0.1/go-cqhttp_linux_arm64.tar.gz
+tar -zxvf go-cqhttp_linux_arm64.tar.gz
+rm go-cqhttp_linus_arm64.tar.gz
+cd /home
+
+echo -e "完成！现在可以从教程:https://m.acfun.cn/v/?ac=41422759的7分45秒开始观看配置文件如何使用,或者查看官方教程"
