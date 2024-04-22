@@ -1,0 +1,3 @@
+[submodule "sub/pages-demo01"]
+	path = sub/pages-demo01
+	url = https://github.com/arlettebrook/pages-demo01
